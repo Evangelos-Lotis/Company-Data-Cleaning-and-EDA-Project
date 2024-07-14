@@ -7,6 +7,7 @@
 -- 3. Null Values or Blank Values
 -- 4. Remove any Columns 
 
+--------------------------------------------------------------------------------------------------------------------------
 
 -- 1. Remove Duplicates
 
@@ -76,6 +77,7 @@ DROP COLUMN row_num;
 SELECT *
 FROM layoffs_staging2;
 
+--------------------------------------------------------------------------------------------------------------------------
 
 -- 2. Standardize the Data
 
@@ -121,6 +123,7 @@ SET `date` = STR_TO_DATE(`date`, '%m/%d/%Y');
 ALTER TABLE layoffs_staging2
 MODIFY COLUMN `date` DATE;
 
+--------------------------------------------------------------------------------------------------------------------------
 
 -- 3. Null Values or Blank Values
 
@@ -151,6 +154,7 @@ SET t1.industry = t2.industry
 WHERE t1.industry IS NULL
 AND t2.industry IS NOT NULL;
 
+--------------------------------------------------------------------------------------------------------------------------
 
 -- 4. Remove any Columns
 
@@ -162,10 +166,12 @@ AND percentage_laid_off IS NULL;
 SELECT *
 FROM layoffs_staging2;
 
+--------------------------------------------------------------------------------------------------------------------------
 
 -- Exploratory Data Analysis (EDA)
 
--- Here we are just going to explore the data and find trends or patterns or anything interesting like outliers and with this info we are just going to look around and see what we find!
+-- Here we are just going to explore the data and find trends or patterns or anything interesting like outliers 
+and with this info we are just going to look around and see what we find!
 
 SELECT *
 FROM layoffs_staging2;
