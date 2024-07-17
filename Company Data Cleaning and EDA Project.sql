@@ -1,12 +1,5 @@
 -- Data Cleaning
 
--- 1. Remove Duplicates
--- 2. Standardize the Data
--- 3. Null Values or Blank Values
--- 4. Remove any Columns 
-
-------------------------------------------------------------------------------------------------------------------------------------
-
 SELECT *
 FROM layoffs;
 
@@ -73,13 +66,6 @@ DROP COLUMN row_num;
 SELECT *
 FROM layoffs_staging2;
 
-------------------------------------------------------------------------------------------------------------------------------------
-
--- 2. Standardize the Data
-
-SELECT *
-FROM layoffs_staging2;
-
 SELECT company, TRIM(company)
 FROM layoffs_staging2;
 
@@ -119,10 +105,6 @@ SET `date` = STR_TO_DATE(`date`, '%m/%d/%Y');
 ALTER TABLE layoffs_staging2
 MODIFY COLUMN `date` DATE;
 
-------------------------------------------------------------------------------------------------------------------------------------
-
--- 3. Null Values or Blank Values
-
 SELECT *
 FROM layoffs_staging2
 WHERE industry IS NULL 
@@ -150,10 +132,6 @@ SET t1.industry = t2.industry
 WHERE t1.industry IS NULL
 AND t2.industry IS NOT NULL;
 
-------------------------------------------------------------------------------------------------------------------------------------
-
--- 4. Remove any Columns
-
 DELETE 
 FROM layoffs_staging2
 WHERE total_laid_off IS NULL
@@ -165,8 +143,6 @@ FROM layoffs_staging2;
 ------------------------------------------------------------------------------------------------------------------------------------
 
 -- Exploratory Data Analysis (EDA)
-
--- Here we are just going to explore the data and find trends or patterns or anything interesting like outliers 
 
 SELECT *
 FROM layoffs_staging2;
